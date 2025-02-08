@@ -1,4 +1,5 @@
 #include "trig_tester.h"
+// #include "trig_tester_space.hpp"
 #include <cmath>
 #include <random>
 
@@ -32,16 +33,18 @@ int main(int argc, char **argv)
                 if (abs(std::atan2(i, j) - a.atan2(i, j)) > maxDifference)
                 {
                     maxDifference = abs(std::atan2(i, j) - a.atan2(i, j));
-                    maxDiffX = i;
-                    maxDiffY = j;
+                    maxDiffY = i;
+                    maxDiffX = j;
                 }
             }
         }
     }
 
     std::cout << "X: " << maxDiffX << ", Y: " << maxDiffY << "\n";
-    std::cout << std::atan2(maxDiffX, maxDiffY) << " " << a.atan2(maxDiffX, maxDiffY) << "\n";
+    std::cout << "STL: " << std::atan2(maxDiffY, maxDiffX) << " " << "TAYLOR: " << a.atan2(maxDiffY, maxDiffX) << "\n";
     std::cout << maxDifference << "\n";
+    std::cout << "\n";
+    std::cout << a.atan_taylor_0(maxDiffY/maxDiffX) << "\n";
 
     // std::cout << "start\n";
     // int for_loop = 100000000000;

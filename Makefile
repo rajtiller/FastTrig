@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++20 -march=native -O3 -flto -ffinite-math-only -fassociative-math -ffast-math -funroll-loops -ftree-vectorize
 LDFLAGS = -flto
 
-SRC = main.cpp trig_tester.cpp
+SRC = main.cpp trig_tester.cpp 
 OBJ = $(SRC:.cpp=.o)
 EXEC = main
 
