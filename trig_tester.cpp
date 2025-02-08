@@ -3,13 +3,37 @@
 // Taylor series expansion centered at 0
 double Approximations::atan_taylor_0(double x)
 {
-    if (std::abs(x) > 1.0) {
-        return (x > 0 ? M_PI_2 : -M_PI_2) - atan_taylor_0(1.0 / x);
-    }
 
     double x2 = x * x;
-    return x *
-           (1.0 + x2 * (-1.0 / 3.0 + x2 * (1.0 / 5.0 + x2 * (-1.0 / 7.0 + x2 * (1.0 / 9.0 + x2 * (-1.0 / 11.0))))));
+    return x * (1.0 + x2 * (
+        -1.0/3.0 + x2 * (
+            1.0/5.0 + x2 * (
+                -1.0/7.0 + x2 * (
+                    1.0/9.0 + x2 * (
+                        -1.0/11.0 + x2 * (
+                            1.0/13.0 + x2 * (
+                                -1.0/15.0 + x2 * (
+                                    1.0/17.0 + x2 * (
+                                        -1.0/19.0 + x2 * (
+                                            1.0/21.0 + x2 * (
+                                                -1.0/23.0 + x2 * (
+                                                    1.0/25.0 + x2 * (
+                                                        -1.0/27.0 + x2 * (
+                                                            1.0/29.0
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ));
 }
 // Taylor series expansion centered at 1 (for x ≈ 1)
 double Approximations::atan_taylor_1(double x)
@@ -24,8 +48,16 @@ double Approximations::atan_taylor_1(double x)
 // NOTE: This assumes that we will fmod the result to [0, 2pi] later
 double Approximations::atan2(double y, double x)
 {
-    
-    if (x == 0 && y > 0) {
+    if (abs(x/y) == 1) {
+
+        if (x/y == 1) {
+            return atan_taylor_1(1);
+        } else {
+            return atan_taylor_1(-1);
+        }
+
+    }
+    else if (x == 0 && y > 0) {
         return pi/2;
     }
     else if (x == 0 && y < 0) {
@@ -49,23 +81,9 @@ double Approximations::atan2(double y, double x)
                                                 : -pi + atan_taylor_0(y / x));
     }
    
-
-    // {
-    //     return (y > 0.0) ? pi / 2 : (y < 0.0 ? -pi / 2 : 0.0);
-    // }
-
-
-    // else if (x < 0.0)
-    // {
-    //     return (std::abs(y) > std::abs(x)) ? ((y > 0) ? pi / 2 - atan_taylor_0(x / y)
-    //                                                   : -pi / 2 - atan_taylor_0(x / y))
-    //                                        : ((y >= 0) ? pi + atan_taylor_0(y / x)
-    //                                                    : -pi + atan_taylor_0(y / x));
-    // }
    
     return -10;
-    // Normalize the angle using fmod for circular wrap-around
-    // return std::fmod(angle + TWO_PI, TWO_PI);
+
 }
 
 double Approximations::sin_taylor(double x)

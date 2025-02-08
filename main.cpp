@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 
     std::cout << "X: " << maxDiffX << ", Y: " << maxDiffY << "\n";
     std::cout << "STL: " << std::atan2(maxDiffY, maxDiffX) << " " << "TAYLOR: " << a.atan2(maxDiffY, maxDiffX) << "\n";
-    std::cout << maxDifference << "\n";
+    std::cout << "Error: " << maxDifference << "\n";
     std::cout << "\n";
     std::cout << a.atan_taylor_0(maxDiffY/maxDiffX) << "\n";
 
