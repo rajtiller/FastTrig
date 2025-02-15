@@ -46,6 +46,10 @@ int main(int argc, char **argv)
     std::cout << "\n";
     std::cout << a.atan_taylor_0(maxDiffY/maxDiffX) << "\n";
 
+    std::cout <<  a.atan2(0.6, -1) << "\n";
+    std::cout << std::atan2(0.6, -1) << "\n";
+
+
     // std::cout << "start\n";
     // int for_loop = 100000000000;
     // std::random_device rd;
